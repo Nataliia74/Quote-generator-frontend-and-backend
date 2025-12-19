@@ -1,0 +1,59 @@
+/* Reset some defaults */
+* {
+  grid-row: 2;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page layout */
+body {
+  background-color: #e4b3b3;
+  text-align: center;
+  padding: 50px;
+}
+
+/* Title */
+h1 {
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Quote container */
+div {
+  background-color: #dfcece;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 60px;
+}
+
+/* Quote text */
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Button */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b1e02;
+  color: white;
+  margin: 20px;
+}
+
+button:hover {
+  background-color: #6a2b04;
+}
