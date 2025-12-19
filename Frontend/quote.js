@@ -1,6 +1,6 @@
 async function getData() {
   const resp = await fetch(
-    "https://quote_gen.hosting.codeyourfuture.io/api/quotes"
+    "https://quote-gen-backend.hosting.codeyourfuture.io/api/quotes"
   );
   const data = await resp.json();
   document.getElementById(
@@ -9,11 +9,14 @@ async function getData() {
 }
 
 async function postQuote(author, quote) {
-  return await fetch("https://quote_gen.hosting.codeyourfuture.io/api/quotes", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ author, quote }),
-  });
+  return await fetch(
+    "https://quote-gen-backend.hosting.codeyourfuture.io/api/quotes",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ author, quote }),
+    }
+  );
 }
 
 const genButton = document.getElementById("btn");
