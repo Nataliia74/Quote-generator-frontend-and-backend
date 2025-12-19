@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 
 const app = express();
-const port = 3000;
+const port = process.env.Port || 3000;
 
 app.use(express.json());
 //app.use(express.static(path.resolve("frontend")));
@@ -33,8 +33,6 @@ app.get("/api/quotes", (req, res) => {
 });
 
 app.post("/api/quotes", (req, res) => {
-  console.log("POST /api/quotes BODY:", req.body);
-
   const { author, quote } = req.body;
   if (!author || !quote) {
     return res.status(400).send("Error");
