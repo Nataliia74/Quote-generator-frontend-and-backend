@@ -1,12 +1,12 @@
 import express from "express";
-import path from "path";
+//import path from "path";
 import cors from "cors";
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
-app.use(express.static(path.resolve("frontend")));
+//app.use(express.static(path.resolve("frontend")));
 app.use(cors());
 
 const quotes = [
@@ -43,6 +43,6 @@ app.post("/api/quotes", (req, res) => {
   return res.send("ok");
 });
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.error(`Quote server listening on port ${port}`);
 });
