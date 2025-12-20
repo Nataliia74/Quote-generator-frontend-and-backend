@@ -22,7 +22,7 @@ h1 {
   margin: 0 auto;
 }
 
-div {
+.gen_box .quote_box {
   background-color: #dfcece;
   padding: 20px;
   border-radius: 8px;
@@ -62,7 +62,7 @@ button:hover {
     gap: 16px;
   }
 
-  div {
+  .gen_box .quote_box {
     max-width: 100%;
   }
 
