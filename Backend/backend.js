@@ -1,9 +1,10 @@
 import express from "express";
 //import path from "path";
 import cors from "cors";
+import { sendEmail } from "./ses_email.js";
 
 const app = express();
-const port = process.env.Port || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 //app.use(express.static(path.resolve("frontend")));
@@ -39,6 +40,16 @@ app.post("/api/quotes", (req, res) => {
   }
   quotes.push({ author: author, quote: quote });
   return res.send("ok");
+});
+
+app.post("/api/ses_email", async (req, res) => {
+  try {
+    const result = await sendEmail();
+    res.json({ ok: true, messageId: result.MessageId });
+  } catch (err) {
+    console.error("Email failed:", err);
+    return res.status(500).json({ error: "Email failed" });
+  }
 });
 
 app.listen(port, "0.0.0.0", () => {
