@@ -1,48 +1,41 @@
-/* Reset some defaults */
 * {
-  grid-row: 2;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Page layout */
 body {
   background-color: #e4b3b3;
   text-align: center;
-  padding: 50px;
+  padding: 24px;
+  margin: 0;
 }
 
-/* Title */
 h1 {
   margin-bottom: 30px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* two equal columns */
+  grid-template-columns: 1fr 1fr; /* two columns */
   gap: 40px;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Quote container */
 div {
   background-color: #dfcece;
   padding: 20px;
-  max-width: 500px;
-  margin: 0 auto;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  margin: 60px;
+
+  margin: 0;
 }
 
-/* Quote text */
 p {
   font-size: 18px;
   margin-bottom: 20px;
 }
 
-/* Button */
 button {
   padding: 10px 20px;
   font-size: 16px;
@@ -56,4 +49,27 @@ button {
 
 button:hover {
   background-color: #6a2b04;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  div {
+    max-width: 100%;
+  }
+
+  button {
+    width: 100%;
+    max-width: 320px;
+    margin: 12px auto;
+    display: block;
+  }
 }
