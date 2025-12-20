@@ -20,8 +20,10 @@ export async function sendEmail() {
     const command = new SendEmailCommand(params);
     const data_email = await ses.send(command);
     console.log("Sent:", data_email.MessageId);
+    return data_email;
   } catch (err) {
     console.error("Error:", err);
+    throw err;
   }
 }
 

@@ -45,7 +45,7 @@ app.post("/api/quotes", (req, res) => {
 app.post("/api/ses_email", async (req, res) => {
   try {
     const result = await sendEmail();
-    res.json({ ok: true, messageId: result.MessageId });
+    return res.json({ ok: true, messageId: result.MessageId });
   } catch (err) {
     console.error("Email failed:", err);
     return res.status(500).json({ error: "Email failed" });
