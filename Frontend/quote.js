@@ -5,16 +5,16 @@ async function getData() {
   const data = await resp.json();
   document.getElementById(
     "quote"
-  ).textContent = `"${data.quote}" - ${data.author}`;
+  ).textContent = `${data.quote} - ${data.author}`;
 }
 
-async function postQuote(author, quote) {
-  return await fetch(
+async function postQuote(quote, author) {
+  return fetch(
     "https://quote-gen-backend.hosting.codeyourfuture.io/api/quotes",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ author, quote }),
+      body: JSON.stringify({ quote, author }),
     }
   );
 }
@@ -22,13 +22,34 @@ async function postQuote(author, quote) {
 const genButton = document.getElementById("btn");
 genButton.addEventListener("click", getData);
 
-const addButton = document.getElementById("btnAdd");
-addButton.addEventListener("click", () => {
-  let author = document.getElementById("inputAuthor").value;
-  let quote = document.getElementById("inputQuote").value;
-  postQuote(author, quote);
-  document.getElementById("inputAuthor").value = "";
-  document.getElementById("inputQuote").value = "";
+const form = document.getElementById("form");
+const errorMsg = document.getElementById("error");
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  let author = document.getElementById("inputAuthor").value.trim();
+  let quote = document.getElementById("inputQuote").value.trim();
+
+  if (author.length < 3) {
+    errorMsg.innerText =
+      "The Author field should contain at least 3 characters";
+    return;
+  }
+
+  if (quote.length < 10) {
+    errorMsg.innerText =
+      "The Quote field should contain at least 10 characters";
+    return;
+  }
+  try {
+    await postQuote(quote, author);
+    form.reset();
+    errorMsg.innerText = "";
+    alert("Thank you for submitting a new quote!");
+  } catch (err) {
+    errorMsg.innerText = "Something went wrong.Try again!";
+  }
 });
 
 getData();
