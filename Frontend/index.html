@@ -15,9 +15,22 @@
         <button id="btn" type="button">Generate a quote</button>
       </div>
       <div class="gen_box">
-        <input id="inputQuote" type="text" min="10" placeholder="Quote" />
-        <input id="inputAuthor" type="text" placeholder="Author" />
-        <button id="btnAdd" type="button">Add your quote</button>
+        <form id="form">
+          <label for="inputQuote">Quote</label>
+          <input id="inputQuote" type="text" minlength="10" maxlength="1000"
+          placeholder="Quote" name="quote" required / ><br />
+          <label for="inputAuthor">Author</label>
+          <input
+            id="inputAuthor"
+            type="text"
+            placeholder="Author"
+            name="author"
+            maxlength="100"
+            required
+          /><br />
+          <button id="btnAdd" type="submit" value="Submit">Add quote</button>
+        </form>
+        <p id="error"></p>
       </div>
     </div>
   </body>
