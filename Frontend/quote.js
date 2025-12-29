@@ -43,7 +43,11 @@ form.addEventListener("submit", async function (e) {
     return;
   }
   try {
-    await postQuote(quote, author);
+    const response = await postQuote(quote, author);
+
+    if (!response.ok) {
+      throw new Error("Server error!");
+    }
     form.reset();
     errorMsg.innerText = "";
     alert("Thank you for submitting a new quote!");
