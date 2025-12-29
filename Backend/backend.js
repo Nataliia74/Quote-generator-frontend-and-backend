@@ -33,7 +33,7 @@ app.get("/api/quotes", (req, res) => {
 
 app.post("/api/quotes", (req, res) => {
   const { quote, author } = req.body;
-  if (!author || !quote) {
+  if (author.length < 3 || quote.length < 10) {
     return res.status(400).send({ error: "Missing data!" });
   }
 
