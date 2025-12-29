@@ -1,5 +1,4 @@
 import express from "express";
-//import path from "path";
 import cors from "cors";
 import { sendEmail } from "./ses_email.js";
 
@@ -7,7 +6,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-//app.use(express.static(path.resolve("frontend")));
 app.use(cors());
 
 const quotes = [
@@ -34,12 +32,13 @@ app.get("/api/quotes", (req, res) => {
 });
 
 app.post("/api/quotes", (req, res) => {
-  const { author, quote } = req.body;
+  const { quote, author } = req.body;
   if (!author || !quote) {
-    return res.status(400).send("Error");
+    return res.status(400).send({ error: "Missing data!" });
   }
-  quotes.push({ author: author, quote: quote });
-  return res.send("ok");
+
+  quotes.push({ quote: quote, author: author });
+  return res.status(200).send({ message: "Quote added!" });
 });
 
 app.post("/api/ses_email", async (req, res) => {
