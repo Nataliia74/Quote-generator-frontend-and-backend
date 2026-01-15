@@ -65,7 +65,7 @@ interface QuoterResponse {
 
 async function getData(): Promise<void> {
   const resp = await fetch(
-    "https://quote-gen-backend.hosting.codeyourfuture.io/api/quotes"
+    "https://quotegenwithtypescriptandpython-backend.hosting.codeyourfuture.io"
   );
   const data: QuoterResponse = await resp.json();
   const quoteE1 = document.getElementById("quote");
@@ -76,7 +76,7 @@ async function getData(): Promise<void> {
 
 async function postQuote(quote: string, author: string): Promise<Response> {
   return fetch(
-    "https://quote-gen-backend.hosting.codeyourfuture.io/api/quotes",
+    "https://quotegenwithtypescriptandpython-backend.hosting.codeyourfuture.io",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },

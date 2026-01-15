@@ -5,7 +5,7 @@ from ses_email import send_email
 import random
 
 app = FastAPI()
-port = 3000
+# port = 3000
 
 app.add_middleware(
     CORSMiddleware,
